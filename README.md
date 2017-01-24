@@ -1,4 +1,6 @@
 
+ต้นฉบับจาก [https://github.com/ryanmcdermott/clean-code-javascript]
+
 # clean-code-javascript
 
 ## Table of Contents
