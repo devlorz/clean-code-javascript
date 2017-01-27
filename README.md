@@ -4,7 +4,7 @@
 # clean-code-javascript
 
 ## Table of Contents
-  1. [Introduction](#introduction)
+  1. [บทนำ](#introduction)
   2. [Variables](#variables)
   3. [Functions](#functions)
   4. [Objects and Data Structures](#objects-and-data-structures)
@@ -14,9 +14,8 @@
   8. [Error Handling](#error-handling)
   9. [Formatting](#formatting)
   10. [Comments](#comments)
-  11. [Translation](#translation)
 
-## Introduction
+## บทนำ
 ![Humorous image of software quality estimation as a count of how many expletives
 you shout when reading code](http://www.osnews.com/images/comics/wtfm.jpg)
 
