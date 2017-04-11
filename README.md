@@ -38,36 +38,36 @@ you shout when reading code](http://www.osnews.com/images/comics/wtfm.jpg)
 ในท้ายที่สุดแล้ว เราจะกำจัดส่วนที่ไม่สมบูรณ์ออกไป อย่าเพิ่งโทษตัวเองกับแบบร่างแรกที่ต้องการการปรับปรุง
 แต่จงจัดการกับโค้ดซะ!
 
-## **Variables**
-### Use meaningful and pronounceable variable names
+## **ตัวแปร**
+### ใช้ชื่อตัวแปรที่สือความหมายและอ่านออกเสียงได้
 
-**Bad:**
+**ตัวอย่างที่ไม่ดี:**
 ```javascript
 const yyyymmdstr = moment().format('YYYY/MM/DD');
 ```
 
-**Good:**
+**ตัวอย่างที่ดี:**
 ```javascript
 const currentDate = moment().format('YYYY/MM/DD');
 ```
 **[⬆ back to top](#table-of-contents)**
 
-### Use the same vocabulary for the same type of variable
+### ใช้คำเดียวกันสำหรับตัวแปรที่ใช้งานแบบเดียวกัน
 
-**Bad:**
+**ตัวอย่างที่ไม่ดี:**
 ```javascript
 getUserInfo();
 getClientData();
 getCustomerRecord();
 ```
 
-**Good:**
+**ตัวอย่างที่ดี:**
 ```javascript
 getUser();
 ```
 **[⬆ back to top](#table-of-contents)**
 
-### Use searchable names
+### ใช้ชื่อที่สามารถค้นหาได้
 We will read more code than we will ever write. It's important that the code we
 do write is readable and searchable. By *not* naming variables that end up
 being meaningful for understanding our program, we hurt our readers.
@@ -76,14 +76,14 @@ Make your names searchable. Tools like
 [ESLint](https://github.com/eslint/eslint/blob/660e0918933e6e7fede26bc675a0763a6b357c94/docs/rules/no-magic-numbers.md)
 can help identify unnamed constants.
 
-**Bad:**
+**ตัวอย่างที่ไม่ดี:**
 ```javascript
 // What the heck is 86400000 for?
 setTimeout(blastOff, 86400000);
 
 ```
 
-**Good:**
+**ตัวอย่างที่ดี:**
 ```javascript
 // Declare them as capitalized `const` globals.
 const MILLISECONDS_IN_A_DAY = 86400000;
@@ -93,15 +93,15 @@ setTimeout(blastOff, MILLISECONDS_IN_A_DAY);
 ```
 **[⬆ back to top](#table-of-contents)**
 
-### Use explanatory variables
-**Bad:**
+### ใช้ตัวแปรเพื่อเป็นการอธิบาย code
+**ตัวอย่างที่ไม่ดี:**
 ```javascript
 const address = 'One Infinite Loop, Cupertino 95014';
 const cityZipCodeRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
 saveCityZipCode(address.match(cityZipCodeRegex)[1], address.match(cityZipCodeRegex)[2]);
 ```
 
-**Good:**
+**ตัวอย่างที่ดี:**
 ```javascript
 const address = 'One Infinite Loop, Cupertino 95014';
 const cityZipCodeRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
@@ -110,10 +110,10 @@ saveCityZipCode(city, zipCode);
 ```
 **[⬆ back to top](#table-of-contents)**
 
-### Avoid Mental Mapping
-Explicit is better than implicit.
+### หลีกเลี่ยงการตั้งชื่อที่มีแค่เราที่เข้าใจ
+เขียนให้ชัดเจนดีกว่าเขียนแล้วต้องมาเดา.
 
-**Bad:**
+**ตัวอย่างที่ไม่ดี:**
 ```javascript
 const locations = ['Austin', 'New York', 'San Francisco'];
 locations.forEach((l) => {
@@ -127,7 +127,7 @@ locations.forEach((l) => {
 });
 ```
 
-**Good:**
+**ตัวอย่างที่ดี:**
 ```javascript
 const locations = ['Austin', 'New York', 'San Francisco'];
 locations.forEach((location) => {
