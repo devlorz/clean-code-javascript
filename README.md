@@ -542,7 +542,8 @@ be happier than the vast majority of other programmers.
 **Bad:**
 ```javascript
 // Global variable referenced by following function.
-// If we had another function that used this name, now it'd be an array and it could break it.
+// If we had another function that used this name, 
+// now it'd be an array and it could break it.
 let name = 'Ryan McDermott';
 
 function splitIntoFirstAndLastName() {
