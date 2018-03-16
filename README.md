@@ -112,7 +112,7 @@ saveCityZipCode(city, zipCode);
 **[⬆ back to top](#table-of-contents)**
 
 ### หลีกเลี่ยงการตั้งชื่อที่มีแค่เราที่เข้าใจ
-เขียนให้ชัดเจนดีกว่าเขียนแล้วต้องมาเดา.
+ตั้งชื่อตัวแปรให้ชัดเจนดีกว่าต้องมาคาดเดาทีหลัง
 
 **ตัวอย่างที่ไม่ดี:**
 ```javascript
@@ -123,7 +123,7 @@ locations.forEach((l) => {
   // ...
   // ...
   // ...
-  // Wait, what is `l` for again?
+  // พอมาถึงบรรทัดนี้เราก็จะลืมไปแล้วว่าตัวแปร l คืออะไร
   dispatch(l);
 });
 ```
@@ -146,7 +146,7 @@ locations.forEach((location) => {
 If your class/object name tells you something, don't repeat that in your
 variable name.
 
-**Bad:**
+**ตัวอย่างที่ไม่ดี:**
 ```javascript
 const Car = {
   carMake: 'Honda',
@@ -159,7 +159,7 @@ function paintCar(car) {
 }
 ```
 
-**Good:**
+**ตัวอย่างที่ดี:**
 ```javascript
 const Car = {
   make: 'Honda',
