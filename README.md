@@ -142,9 +142,8 @@ locations.forEach((location) => {
 ```
 **[⬆ back to top](#table-of-contents)**
 
-### Don't add unneeded context
-If your class/object name tells you something, don't repeat that in your
-variable name.
+### อย่าใส่สิ่งที่ไม่จำเป็นลงใน code
+ถ้าชื่อ class/object บอกอยู่แล้วว่าสื่อถึงอะไร ไม่จำเป็นต้องใส่อีกในชื่อตัวแปร
 
 **ตัวอย่างที่ไม่ดี:**
 ```javascript
