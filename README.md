@@ -172,13 +172,12 @@ function paintCar(car) {
 ```
 **[⬆ back to top](#table-of-contents)**
 
-### Use default arguments instead of short circuiting or conditionals
-Default arguments are often cleaner than short circuiting. Be aware that if you
-use them, your function will only provide default values for `undefined`
-arguments. Other "falsy" values such as `''`, `""`, `false`, `null`, `0`, and
-`NaN`, will not be replaced by a default value.
+### ใช้ Default arguments แทนการ Short circuit หรือเช็คเงื่อนไข
+การใช้ Default arguments ทำให้โค้ดดู "สะอาด" กว่าการใช้ Short circuit
+โปรดระวังในการใช้ด้วยเพราะ Default arguments จะกำหนดค่าให้เฉพาะ arguments ที่เป็น undefined เท่านั้น
+ค่าที่เป็น `''`, `""`, `false`, `null`, `0`, และ `NaN` จะไม่ถูกแทนค่าด้วย Default value
 
-**Bad:**
+**ตัวอย่างที่ไม่ดี:**
 ```javascript
 function createMicrobrewery(name) {
   const breweryName = name || 'Hipster Brew Co.';
@@ -187,7 +186,7 @@ function createMicrobrewery(name) {
 
 ```
 
-**Good:**
+**ตัวอย่างที่ดี:**
 ```javascript
 function createMicrobrewery(name = 'Hipster Brew Co.') {
   // ...
