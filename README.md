@@ -196,42 +196,34 @@ function createMicrobrewery(name = 'Hipster Brew Co.') {
 **[⬆ back to top](#table-of-contents)**
 
 ## **Functions**
-### Function arguments (2 or fewer ideally)
-Limiting the amount of function parameters is incredibly important because it
-makes testing your function easier. Having more than three leads to a
-combinatorial explosion where you have to test tons of different cases with
-each separate argument.
+### Function arguments (มีเพียง 2 หรือน้อยกว่ายิ่งดี)
+จำกัดจำนวน function parameter เป็นสิ่งที่สำคัญเพราะจะทำให้การ test function ง่ายขึ้น
+การมี parameter มากกว่า 3 จะทำให้ต้อง test ลำบาก เพราะต้องเขียนครอบคลุมหลาย test case
 
-One or two arguments is the ideal case, and three should be avoided if possible.
-Anything more than that should be consolidated. Usually, if you have
-more than two arguments then your function is trying to do too much. In cases
-where it's not, most of the time a higher-level object will suffice as an
-argument.
+การมีเพียง 1 หรือ 2 argument เป็นสิ่งที่ดี ส่วนการมี 3 argument เป็นสิ่งที่ควรหลีกเลี่ยง 
+และไม่ควรมีมากกว่านั้น ปกติถ้ามีมากกว่า 2 argument แสดงว่า function นั้นพยายามทำหลายอย่างมากเกินไป
+ถ้าไม่ ก็ควรใช้เป็นตัวแปรประเภท object แทน
 
-Since JavaScript allows you to make objects on the fly, without a lot of class
-boilerplate, you can use an object if you are finding yourself needing a
-lot of arguments.
+เพราะภาษา javascript สามารถสร้าง object ได้ง่ายโดยไม่ต้องเขียน class boilerplate
+คุณสามารถใช้ object แทน argument หลายตัวแทน
 
-To make it obvious what properties the function expects, you can use the ES2015/ES6
-destructuring syntax. This has a few advantages:
+คุณสามารถใช้ destrcuturing ของ ES2015/ES6 เพื่อแสดงให้ชัดเจนว่า function ต้องการ property ใดบ้าง
+ซึ่งการทำแบบนี้มีข้อดีดังนี้
 
-1. When someone looks at the function signature, it's immediately clear what
-properties are being used.
-2. Destructuring also clones the specified primitive values of the argument
-object passed into the function. This can help prevent side effects. Note:
-objects and arrays that are destructured from the argument object are NOT
-cloned.
-3. Linters can warn you about unused properties, which would be impossible
-without destructuring.
+1. เมื่อมีคนดูที่ function จะสามารถรู้ได้ทันทีว่าต้องการ property ใดบ้าง
+2. การใช้ destructuring จะมีการ clone primitive value ของ argument 
+ที่ถูกส่งเข้ามาใน function ทำให้ไม่เกิด side effect
+ยกเว้นตัวแปรประเภท object และ array จะไม่ถูก clone
+3. linter สามารถเตือนได้ว่ามี property ใดบ้างที่ไม่ถูกใช้ ซึ่งจะทำไม่ได้หากไม่ใช้ destructuring
 
-**Bad:**
+**ตัวอย่างที่ไม่ดี:**
 ```javascript
 function createMenu(title, body, buttonText, cancellable) {
   // ...
 }
 ```
 
-**Good:**
+**ตัวอย่างที่ดี:**
 ```javascript
 function createMenu({ title, body, buttonText, cancellable }) {
   // ...
