@@ -239,14 +239,11 @@ createMenu({
 **[⬆ back to top](#table-of-contents)**
 
 
-### Functions should do one thing
-This is by far the most important rule in software engineering. When functions
-do more than one thing, they are harder to compose, test, and reason about.
-When you can isolate a function to just one action, they can be refactored
-easily and your code will read much cleaner. If you take nothing else away from
-this guide other than this, you'll be ahead of many developers.
+### Functions ควรทำแค่สิ่งเดียว
+function ควรทำเพียงแค่สิ่งเดียวนั่นถือเป็นกฏที่สำคัญของ software engineering
+เมื่อ function เริ่มทำมากกว่าหนึ่งอย่างจะทำให้ยากแก่การสร้าง ทดสอบ function นั้นๆ ถ้า function ทำแค่เพียงสิ่งเดียวแล้ว เราจะสามารถ refactor ได้ง่าย และ code ยังอ่านง่ายอีกด้วย 
 
-**Bad:**
+**ตัวอย่างที่ไม่ดี:**
 ```javascript
 function emailClients(clients) {
   clients.forEach((client) => {
@@ -258,7 +255,7 @@ function emailClients(clients) {
 }
 ```
 
-**Good:**
+**ตัวอย่างที่ดี:**
 ```javascript
 function emailActiveClients(clients) {
   clients
@@ -273,9 +270,9 @@ function isActiveClient(client) {
 ```
 **[⬆ back to top](#table-of-contents)**
 
-### Function names should say what they do
+### ชื่อ function ควรสื่อถึงสิ่งที่ function นั้นทำ
 
-**Bad:**
+**ตัวอย่างที่ไม่ดี:**
 ```javascript
 function addToDate(date, month) {
   // ...
@@ -283,11 +280,11 @@ function addToDate(date, month) {
 
 const date = new Date();
 
-// It's hard to tell from the function name what is added
+// เราไม่สามารถบอกจากชื่อ function ได้ว่าอะไรถูก add 
 addToDate(date, 1);
 ```
 
-**Good:**
+**ตัวอย่างที่ดี:**
 ```javascript
 function addMonthToDate(month, date) {
   // ...
@@ -298,12 +295,13 @@ addMonthToDate(1, date);
 ```
 **[⬆ back to top](#table-of-contents)**
 
-### Functions should only be one level of abstraction
+### Function ควร abstract เพียงแค่ชั้นเดียว
+function ไม่ควรทำหลายๆอย่างภายใน function เดียว ควรแยกสิ่งที่ทำอย่างอื่นออกมาเป็นอีก function ต่างหาก
 When you have more than one level of abstraction your function is usually
 doing too much. Splitting up functions leads to reusability and easier
 testing.
 
-**Bad:**
+**ตัวอย่างที่ไม่ดี:**
 ```javascript
 function parseBetterJSAlternative(code) {
   const REGEXES = [
@@ -329,7 +327,7 @@ function parseBetterJSAlternative(code) {
 }
 ```
 
-**Good:**
+**ตัวอย่างที่ดี:**
 ```javascript
 function parseBetterJSAlternative(code) {
   const tokens = tokenize(code);
@@ -366,15 +364,17 @@ function lexer(tokens) {
 ```
 **[⬆ back to top](#table-of-contents)**
 
-### Remove duplicate code
+### ลดโค้ดที่ซ้ำซ้อนออก
 Do your absolute best to avoid duplicate code. Duplicate code is bad because it
 means that there's more than one place to alter something if you need to change
 some logic.
+ควรพยายามหลีกเลี่ยงการเขียนโค้ดซ้ำซ้อน การเขียนโค้ดซ้ำซ้อนเป็นสิ่งที่ไม่ดีเพราะมันหมายถึงเราต้องทำการแก้ไขมากกว่า 1 ที่ถ้ามีการเปลี่ยนโลจิคการทำงาน
 
 Imagine if you run a restaurant and you keep track of your inventory: all your
 tomatoes, onions, garlic, spices, etc. If you have multiple lists that
 you keep this on, then all have to be updated when you serve a dish with
 tomatoes in them. If you only have one list, there's only one place to update!
+ลองจินตนาการว่าถ้าเป็นร้านอาหารแล้วคุณต้องทำการตรวจเช็ค ไม่ว่าจะเป็นมะเขือเทศ หัวหอม กะเทียม เครื่องเทศ แล้วคุณต้องคอยอัพเดททุกๆครั้งที่มีการเซิฟอาหาร ถ้าคุณมีลิสต์รายการหลายๆลิสต์ คุณต้องอัพเดททุกๆลิสต์ แต่ถ้ามีแค่ลิสต์เดียวคุณก็แค่อัพเดทแค่เพียงที่เดียวเท่านั้น
 
 Oftentimes you have duplicate code because you have two or more slightly
 different things, that share a lot in common, but their differences force you
@@ -882,10 +882,11 @@ for (let i = 0; i < list.length; i++) {
 ```
 **[⬆ back to top](#table-of-contents)**
 
-### Remove dead code
+### ลบโค้ดที่ไม่ได้ใช้งานออก
 Dead code is just as bad as duplicate code. There's no reason to keep it in
 your codebase. If it's not being called, get rid of it! It will still be safe
 in your version history if you still need it.
+โค้ดที่ไม่ได้ใช้งานก็เหมือนโค้ดที่ซ้ำซ้อน ซึ่งคุณไม่ควรจะเก็บมันไว้ ถ้าโค้ดนั้นไม่เคยถูกเรียกใช้งานเลย ให้ลบมันออกไปซะ ถ้าคุณยังต้องการมันในภายหลังก็สามารถหาได้ใน version history
 
 **Bad:**
 ```javascript
@@ -913,8 +914,8 @@ inventoryTracker('apples', req, 'www.inventory-awesome.io');
 ```
 **[⬆ back to top](#table-of-contents)**
 
-## **Objects and Data Structures**
-### Use getters and setters
+## **Objects และ Data Structures**
+### ใช้ getters และ setters
 Using getters and setters to access data on objects could be better than simply
 looking for a property on an object. "Why?" you might ask. Well, here's an
 unorganized list of reasons why:
@@ -1012,7 +1013,7 @@ console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
 
 
 ## **Classes**
-### Prefer ES2015/ES6 classes over ES5 plain functions
+### ใช้ ES2015/ES6 classe แทน ES5 plain function
 It's very difficult to get readable class inheritance, construction, and method
 definitions for classical ES5 classes. If you need inheritance (and be aware
 that you might not), then prefer ES2015/ES6 classes. However, prefer small functions over
@@ -1088,7 +1089,7 @@ class Human extends Mammal {
 **[⬆ back to top](#table-of-contents)**
 
 
-### Use method chaining
+### ใช้ method chaining
 This pattern is very useful in JavaScript and you see it in many libraries such
 as jQuery and Lodash. It allows your code to be expressive, and less verbose.
 For that reason, I say, use method chaining and take a look at how clean your code
@@ -1166,7 +1167,7 @@ const car = new Car('Ford','F-150','red')
 ```
 **[⬆ back to top](#table-of-contents)**
 
-### Prefer composition over inheritance
+### ใช้ composition แทน inheritance
 As stated famously in [*Design Patterns*](https://en.wikipedia.org/wiki/Design_Patterns) by the Gang of Four,
 you should prefer composition over inheritance where you can. There are lots of
 good reasons to use inheritance and lots of good reasons to use composition.
@@ -1678,7 +1679,7 @@ Test Driven Development (TDD), that is great, but the main point is to just
 make sure you are reaching your coverage goals before launching any feature,
 or refactoring an existing one.
 
-### Single concept per test
+### หนึ่งเทสต่อหนึ่งคอนเซปต์
 
 **Bad:**
 ```javascript
@@ -1730,7 +1731,7 @@ describe('MakeMomentJSGreatAgain', () => {
 **[⬆ back to top](#table-of-contents)**
 
 ## **Concurrency**
-### Use Promises, not callbacks
+### ใช้ Promises แทน callbacks
 Callbacks aren't clean, and they cause excessive amounts of nesting. With ES2015/ES6,
 Promises are a built-in global type. Use them!
 
@@ -1774,7 +1775,7 @@ get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin')
 ```
 **[⬆ back to top](#table-of-contents)**
 
-### Async/Await are even cleaner than Promises
+### ใช้ Async/Await แทน Promises
 Promises are a very clean alternative to callbacks, but ES2017/ES8 brings async and await
 which offer an even cleaner solution. All you need is a function that is prefixed
 in an `async` keyword, and then you can write your logic imperatively without
@@ -1823,7 +1824,7 @@ identified when something in your program has gone wrong and it's letting
 you know by stopping function execution on the current stack, killing the
 process (in Node), and notifying you in the console with a stack trace.
 
-### Don't ignore caught errors
+### อย่าเพิกเฉยต่อ error
 Doing nothing with a caught error doesn't give you the ability to ever fix
 or react to said error. Logging the error to the console (`console.log`)
 isn't much better as often times it can get lost in a sea of things printed
@@ -1855,7 +1856,7 @@ try {
 }
 ```
 
-### Don't ignore rejected promises
+### อย่าละเลย rejected promises
 For the same reason you shouldn't ignore caught errors
 from `try/catch`.
 
@@ -1937,7 +1938,7 @@ class Alpaca {}
 **[⬆ back to top](#table-of-contents)**
 
 
-### Function callers and callees should be close
+### ตัวเรียก function และ function ที่ถูกเรียกควรอยู่ใกล้กัน
 If a function calls another, keep those functions vertically close in the source
 file. Ideally, keep the caller right above the callee. We tend to read code from
 top-to-bottom, like a newspaper. Because of this, make your code read that way.
@@ -2023,7 +2024,7 @@ review.perfReview();
 **[⬆ back to top](#table-of-contents)**
 
 ## **Comments**
-### Only comment things that have business logic complexity.
+### คอมเมนต์แต่สิ่งที่เป็น business logic ที่ซับซ้อน
 Comments are an apology, not a requirement. Good code *mostly* documents itself.
 
 **Bad:**
@@ -2066,8 +2067,9 @@ function hashIt(data) {
 ```
 **[⬆ back to top](#table-of-contents)**
 
-### Don't leave commented out code in your codebase
+### ไม่ควรเหลือโค้ดที่ถูกคอมเมนต์เอาไว้
 Version control exists for a reason. Leave old code in your history.
+เนื่องจากเรามี Version Control ควรจะเก็บโค้ดเก่าไว้ที่นั่น
 
 **Bad:**
 ```javascript
